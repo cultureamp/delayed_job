@@ -13,10 +13,7 @@ AllCops:
     - 'Gemfile'
     - 'Rakefile'
     - 'delayed_job.gemspec'
-  TargetRubyVersion: 2.1
-
-RedundantBlockCall:
-  Enabled: false
+  TargetRubyVersion: 3.0
 
 BlockLength:
   Enabled: false
@@ -133,9 +130,6 @@ Style/SymbolArray:
 SymbolProc:
   Enabled: false
 
-TrailingCommaInLiteral:
-  Enabled: false
-
 TrailingCommaInArguments:
   Enabled: false
 
@@ -143,4 +137,16 @@ YAMLLoad:
   Enabled: false
 
 ZeroLengthPredicate:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/CaseLikeIf:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Migration/DepartmentName:
   Enabled: false
