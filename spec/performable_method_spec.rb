@@ -29,7 +29,7 @@ describe Delayed::PerformableMethod do
     end
 
     it 'calls the method on the object' do
-      expect(@method.object).to receive(:count).with(:o => true)
+      expect(@method.object).to receive(:count).with({:o => true})
       @method.perform
     end
   end
@@ -51,7 +51,7 @@ describe Delayed::PerformableMethod do
     end
 
     it 'calls the method on the object' do
-      expect(@method.object).to receive(:count).with({:o => true}, :o2 => true)
+      expect(@method.object).to receive(:count).with({:o => true}, {:o2 => true})
       @method.perform
     end
   end
@@ -108,7 +108,7 @@ describe Delayed::PerformableMethod do
     end
 
     it 'calls the method on the object' do
-      expect(@method.object).to receive(:count).with('o', :o => true)
+      expect(@method.object).to receive(:count).with('o', {:o => true})
       @method.perform
     end
   end
