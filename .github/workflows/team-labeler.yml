@@ -1,0 +1,11 @@
+name: Add team label to PR
+on: pull_request
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: JulienKode/team-labeler-action@v0.1.1
+      if: github.event.action == 'opened'
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
