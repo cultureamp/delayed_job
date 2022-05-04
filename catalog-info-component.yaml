@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: delayed_job
+  description: Forked delayed_job gem with ruby 3 support
+  links:
+    - title: Github
+      url: https://github.com/cultureamp/delayed_job
+  tags:
+    - users-internal
+    - camp-engagement
+    - data-none
+  annotations:
+    github.com/project-slug: cultureamp/delayed_job
+    github.com/team-slug: cultureamp/sol
+spec:
+  type: library
+  owner: sol
+  lifecycle: development
