@@ -56,8 +56,10 @@ module Delayed
     def ruby2_perform
       return unless object
 
-      if args && !args.empty?
+      if args && !args.empty? && kwargs
         object.send(method_name, *args, kwargs)
+      elsif args && !args.empty?
+        object.send(method_name, *args)
       elsif kwargs && !kwargs.empty?
         object.send(method_name, kwargs)
       else
