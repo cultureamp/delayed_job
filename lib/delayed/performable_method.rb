@@ -2,7 +2,7 @@ module Delayed
   class PerformableMethod
     attr_accessor :object, :method_name, :args, :kwargs
 
-    def initialize(object, method_name, args = nil, kwargs = nil)
+    def initialize(object, method_name, args, kwargs = {})
       raise NoMethodError, "undefined method `#{method_name}' for #{object.inspect}" unless object.respond_to?(method_name, true)
 
       if object.respond_to?(:persisted?) && !object.persisted?
@@ -23,18 +23,32 @@ module Delayed
       end
     end
 
-    def perform
-      if RUBY_VERSION >= '3.0'
-        ruby3_perform
-      else
-        ruby2_perform
+    def kwargs
+      # Default to a hash so that we can handle deserializing jobs that were
+      # created before kwargs was available.
+      @kwargs || {}
+    end
+
+    # In ruby 3 we need to explicitly separate regular args from the keyword-args.
+    if RUBY_VERSION >= '3.0'
+      def perform
+        object.send(method_name, *args, **kwargs) if object
+      end
+    else
+      # On ruby 2, rely on the implicit conversion from a hash to kwargs
+      def perform
+        return unless object
+        if kwargs.present?
+          object.send(method_name, *args, kwargs)
+        else
+          object.send(method_name, *args)
+        end
       end
     end
 
     def method(sym)
       object.method(sym)
     end
-
     method_def = []
     location = caller_locations(1, 1).first
     file = location.path
@@ -49,26 +63,6 @@ module Delayed
 
     def respond_to?(symbol, include_private = false)
       super || object.respond_to?(symbol, include_private)
-    end
-
-    private
-
-    def ruby2_perform
-      return unless object
-
-      if args && !args.empty? && kwargs
-        object.send(method_name, *args, kwargs)
-      elsif args && !args.empty?
-        object.send(method_name, *args)
-      elsif kwargs && !kwargs.empty?
-        object.send(method_name, kwargs)
-      else
-        object.send(method_name)
-      end
-    end
-
-    def ruby3_perform
-      object.send(method_name, *args, **kwargs) if object
     end
   end
 end
