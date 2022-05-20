@@ -4,6 +4,7 @@ require 'active_support/core_ext/numeric/time'
 require 'active_support/core_ext/class/attribute_accessors'
 require 'active_support/hash_with_indifferent_access'
 require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/kernel/reporting'
 require 'logger'
 require 'benchmark'
 

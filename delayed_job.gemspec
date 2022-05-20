@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.test_files     = Dir.glob('spec/**/*')
   spec.version        = '4.1.10'
   spec.metadata       = {
-    'changelog_uri'   => 'https://github.com/collectiveidea/delayed_job/blob/master/CHANGELOG.md',
+    'changelog_uri' => 'https://github.com/collectiveidea/delayed_job/blob/master/CHANGELOG.md',
     'bug_tracker_uri' => 'https://github.com/collectiveidea/delayed_job/issues',
     'source_code_uri' => 'https://github.com/collectiveidea/delayed_job'
   }
