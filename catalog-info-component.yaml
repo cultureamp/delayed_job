@@ -7,13 +7,13 @@ metadata:
     - title: Github
       url: https://github.com/cultureamp/delayed_job
   tags:
-    - users-internal
     - camp-engagement
     - data-none
+    - users-internal
   annotations:
     github.com/project-slug: cultureamp/delayed_job
-    github.com/team-slug: cultureamp/sol
+    github.com/team-slug: cultureamp/ad-astra
 spec:
   type: library
-  owner: sol
+  owner: ad-astra
   lifecycle: development
