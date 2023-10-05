@@ -12,8 +12,8 @@ metadata:
     - users-internal
   annotations:
     github.com/project-slug: cultureamp/delayed_job
-    github.com/team-slug: cultureamp/ad-astra
+    github.com/team-slug: cultureamp/engage-data-services
 spec:
   type: library
-  owner: ad-astra
+  owner: engage-data-services
   lifecycle: development
