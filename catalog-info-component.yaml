@@ -8,7 +8,7 @@ metadata:
       url: https://github.com/cultureamp/delayed_job
   tags:
     - camp-engagement
-    - data-none
+    - data-public
     - users-internal
   annotations:
     github.com/project-slug: cultureamp/delayed_job
